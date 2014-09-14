@@ -50,7 +50,7 @@ class TwitterOAuth implements TwitterOAuthInterface
         $this->_clientSecret = $clientSecret;
         $this->_redirectUri = $redirectUri;
 
-        $this->_instance = new \TwitterOAuth($clientId, $clientSecret);
+        $this->_instance = new \Abraham\TwitterOAuth\TwitterOAuth($clientId, $clientSecret);
     }
 
     /**
@@ -120,7 +120,7 @@ class TwitterOAuth implements TwitterOAuthInterface
      *
      * @param \TwitterOAuth $instance
      */
-    public function setDriverInstance(\TwitterOAuth $instance)
+    public function setDriverInstance(\Abraham\TwitterOAuth\TwitterOAuth $instance)
     {
         $this->_instance = $instance;
     }
@@ -147,7 +147,7 @@ class TwitterOAuth implements TwitterOAuthInterface
      */
     public function authorize($token, $tokenSecret)
     {
-        $this->_instance = new \TwitterOAuth($this->getClientId(), $this->getClientSecret(), $token, $tokenSecret);
+        $this->_instance = new \Abraham\TwitterOAuth\TwitterOAuth($this->getClientId(), $this->getClientSecret(), $token, $tokenSecret);
     }
 
     /**
@@ -182,7 +182,7 @@ class TwitterOAuth implements TwitterOAuthInterface
 
         }
 
-        $this->_instance = new \TwitterOAuth($this->getClientId(), $this->getClientSecret(
+        $this->_instance = new \Abraham\TwitterOAuth\TwitterOAuth($this->getClientId(), $this->getClientSecret(
         ), $accessToken['oauth_token'], $accessToken['oauth_token_secret']);
 
     }

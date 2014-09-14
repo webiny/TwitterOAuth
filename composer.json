@@ -20,7 +20,8 @@
 		"php": ">=5.4.0",
 		"webiny/class-loader": "dev-master",
 		"webiny/std-lib": "dev-master",
-		"webiny/abraham-twitteroauth": "dev-master"
+		"webiny/http": "dev-master",
+		"webiny/abraham-twitteroauth": "dev-dev"
 	},
 	"suggest":{
 		"webiny/oauth2": "Use Webiny OAuth2 component for OAuth2 protocol"
