@@ -50,7 +50,7 @@ class TwitterOAuth implements TwitterOAuthInterface
         $this->_clientSecret = $clientSecret;
         $this->_redirectUri = $redirectUri;
 
-        $this->_instance = new \TwitterOAuth($clientId, $clientSecret);
+        $this->_instance = new \Abraham\TwitterOAuth($clientId, $clientSecret);
     }
 
     /**
