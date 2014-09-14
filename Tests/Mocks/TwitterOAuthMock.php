@@ -10,7 +10,7 @@ namespace Webiny\Component\TwitterOAuth\Tests\Mocks;
 /**
  * This class mocks \TwitterOAuth class.
  */
-class TwitterOAuthMock extends \TwitterOAuth
+class TwitterOAuthMock extends \Abraham\TwitterOAuth\TwitterOAuth
 {
     public $http_code = 200;
 
