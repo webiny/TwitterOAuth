@@ -60,10 +60,10 @@ class TwitterOAuthTest extends \PHPUnit_Framework_TestCase
     public function testGetAccessToken(TwitterOAuth $instance)
     {
         $result = [
-            "oauth_token" => "the-access-token",
+            "oauth_token"        => "the-access-token",
             "oauth_token_secret" => "the-access-secret",
-            "user_id" => "5555",
-            "screen_name" => "WebinyPlatform"
+            "user_id"            => "5555",
+            "screen_name"        => "WebinyPlatform"
         ];
         $this->assertSame($result, $instance->getAccessToken('v'));
     }
@@ -75,8 +75,9 @@ class TwitterOAuthTest extends \PHPUnit_Framework_TestCase
 
         // create bridge
         $bridge = new \Webiny\Component\TwitterOAuth\Bridge\TwitterOAuth\TwitterOAuth($config->get('MyTwitterApp.ClientId'
-                                                                                      ), $config->get('MyTwitterApp.ClientSecret'
-                                                                                      ), '/');
+            ), $config->get('MyTwitterApp.ClientSecret'
+            ), '/'
+        );
 
         // replace the \TwitterOAuth instance with mock
         $mock = new TwitterOAuthMock($config->get('MyTwitterApp.ClientId'), $config->get('MyTwitterApp.ClientSecret'));

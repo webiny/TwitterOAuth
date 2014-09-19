@@ -68,9 +68,10 @@ class TwitterOAuth
 
         if (!self::isInstanceOf($instance, '\Webiny\Component\TwitterOAuth\Bridge\TwitterOAuthInterface')) {
             throw new TwitterOAuthException(TwitterOAuthException::MSG_INVALID_ARG, [
-                'driver',
-                '\Webiny\Component\OAuth2\TwitterOAuth\TwitterOAuthInterface'
-            ]);
+                    'driver',
+                    '\Webiny\Component\OAuth2\TwitterOAuth\TwitterOAuthInterface'
+                ]
+            );
         }
 
         return $instance;
