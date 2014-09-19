@@ -147,7 +147,9 @@ class TwitterOAuth implements TwitterOAuthInterface
      */
     public function authorize($token, $tokenSecret)
     {
-        $this->_instance = new \Abraham\TwitterOAuth\TwitterOAuth($this->getClientId(), $this->getClientSecret(), $token, $tokenSecret);
+        $this->_instance = new \Abraham\TwitterOAuth\TwitterOAuth($this->getClientId(), $this->getClientSecret(),
+                                                                  $token, $tokenSecret
+        );
     }
 
     /**
@@ -178,12 +180,15 @@ class TwitterOAuth implements TwitterOAuthInterface
         // check keys
         if (!isset($accessToken['oauth_token']) || !isset($accessToken['oauth_token_secret'])) {
 
-            throw new TwitterOAuthException('All required keys must be present inside the token array. The requested keys are [oauth_token, oauth_token_secret].');
+            throw new TwitterOAuthException('All required keys must be present inside the token array. The requested keys are [oauth_token, oauth_token_secret].'
+            );
 
         }
 
-        $this->_instance = new \Abraham\TwitterOAuth\TwitterOAuth($this->getClientId(), $this->getClientSecret(
-        ), $accessToken['oauth_token'], $accessToken['oauth_token_secret']);
+        $this->_instance = new \Abraham\TwitterOAuth\TwitterOAuth($this->getClientId(), $this->getClientSecret(),
+                                                                  $accessToken['oauth_token'],
+                                                                  $accessToken['oauth_token_secret']
+        );
 
     }
 
