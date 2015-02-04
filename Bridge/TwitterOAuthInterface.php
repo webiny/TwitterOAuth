@@ -25,19 +25,11 @@ interface TwitterOAuthInterface
     public function __construct($clientId, $clientSecret, $redirectUri);
 
     /**
-     * Get the request token.
+     * Get the request token (temporary credentials).
      *
-     * @return string Request token.
+     * @return array Request token [oauth_token, oauth_token_secret].
      */
     public function getRequestToken();
-
-    /**
-     * Get the response code in http format.
-     * Example return: 200
-     *
-     * @return int Response code.
-     */
-    public function getResponseCode();
 
     /**
      * Get the authorize url.
@@ -51,24 +43,14 @@ interface TwitterOAuthInterface
     /**
      * Once we have token, we can run the authorization which than give us the option to request the access token.
      *
-     * @param string $token
-     * @param string $tokenSecret
+     * @param string $requestToken Request token returned by getRequestToken method.
+     * @param string $requestTokenSecret Request token secret returned by getRequestToken method.
+     * @param string $oauthToken OAuth token returned by Twitter OAuth server.
+     * @param string $oauthTokenVerifier OAuth token verifier returned by Twitter OAuth server.
      *
-     * @return void
+     * @return string
      */
-    public function authorize($token, $tokenSecret);
-
-    /**
-     * Get the access token.
-     *
-     * @param string $verifier Token verifier.
-     *
-     * @return array ["oauth_token" => "the-access-token",
-     *                "oauth_token_secret" => "the-access-secret",
-     *                "user_id" => "5555",
-     *                "screen_name" => "WebinyPlatform"]
-     */
-    public function getAccessToken($verifier);
+    public function requestAccessToken($requestToken, $requestTokenSecret, $oauthToken, $oauthTokenVerifier);
 
     /**
      * Sets the access token.
@@ -81,32 +63,50 @@ interface TwitterOAuthInterface
     public function setAccessToken(array $accessToken);
 
     /**
+     * Returns the current access token.
+     *
+     * @return Array|bool False is returned if the access token is not set.
+     */
+    public function getAccessToken();
+
+    /**
+     * Returns an instance of TwitterOAuthUser.
+     *
+     * @return TwitterOAuthUser
+     */
+    public function getUserDetails();
+
+    /**
      * Make a GET request to Twitter API.
      *
      * @param string $url    Api url.
+     * @param array $headers Request headers.
      * @param array  $params Additional parameters.
      *
      * @return string|array Api response (if json) it will be returned as array.
      */
-    public function get($url, array $params = []);
+    public function get($url, array $headers = [], array $params = []);
 
     /**
      * Make a POST request to Twitter API.
      *
      * @param string $url    Api url.
+     * @param array $postBody Post body.
+     * @param array $headers Request headers.
      * @param array  $params Additional parameters.
      *
      * @return string|array Api response (if json) it will be returned as array.
      */
-    public function post($url, array $params = []);
+    public function post($url, array $postBody, array $headers = [], array $params = []);
 
     /**
      * Make a DELETE request to Twitter API.
      *
      * @param string $url    Api url.
+     * @param array $headers Request headers.
      * @param array  $params Additional parameters.
      *
      * @return string|array Api response (if json) it will be returned as array.
      */
-    public function delete($url, array $params = []);
+    public function delete($url, array $headers = [], array $params = []);
 }
